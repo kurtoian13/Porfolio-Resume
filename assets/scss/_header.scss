@@ -1,0 +1,254 @@
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  z-index: 997;
+  transition: all 0.5s;
+  height: 80px;
+  background: rgba(darken($secondary, 15), 0.8);
+
+  &.header-transparent {
+    background: transparent;
+  }
+
+  &.header-scrolled {
+    height: 60px;
+    background: rgba(darken($secondary, 15), 0.8);
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+
+/* Desktop Navigation */
+.nav-menu {
+
+  &, * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  > ul {
+    display: flex;
+  }
+
+  > ul > li {
+    position: relative;
+    justify-content: center;
+  }
+
+  a {
+    display: block;
+    position: relative;
+    color: $white;
+    padding: 10px 15px;
+    transition: 0.3s;
+    font-size: 12px; 
+    font-family: $font-primary;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  a:hover, .active > a, li:hover > a {
+    color: lighten($primary, 10);
+    text-decoration: none;
+  }
+
+  .drop-down ul {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 30px);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    padding: 10px 0;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    transition: ease all 0.3s;
+  }
+  
+  .drop-down:hover > ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .drop-down li {
+    min-width: 180px;
+    position: relative;
+  }
+
+  .drop-down ul a {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: none;
+    color: $secondary
+  }
+
+  .drop-down ul a:hover, .drop-down ul .active > a, .drop-down ul li:hover > a {
+    color: $primary;
+  }
+  
+  .drop-down > a:after {
+    content: "\ea99"; 
+    font-family: IcoFont;
+    padding-left: 5px;
+  }
+
+  .drop-down {
+
+    .drop-down ul {
+      top: 0;
+      left: calc(100% - 30px);
+    }
+
+    .drop-down:hover > ul {
+      opacity: 1;
+      top: 0;
+      left: 100%;
+    }
+
+    .drop-down > a {
+      padding-right: 35px;
+    }
+
+    .drop-down > a:after {
+      content: "\eaa0"; 
+      font-family: IcoFont;
+      position: absolute;
+      right: 15px;
+    }
+
+  }
+  
+}
+
+@media (max-width: 1366px) {
+  .nav-menu .drop-down {
+
+    .drop-down ul {
+      left: -90%;
+    }
+
+    .drop-down:hover > ul {
+      left: -100%;
+    }
+
+    .drop-down > a:after {
+      content: "\ea9d"; 
+    }
+  }
+}
+
+/* Mobile Navigation */
+.mobile-nav-toggle {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  z-index: 9998;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  transition: all 0.4s;
+  outline: none !important;
+  line-height: 1;
+  cursor: pointer;
+  text-align: right;
+  i {
+    color: $white;
+  }
+
+}
+$mobile_nav_spacing: 15px;
+
+.mobile-nav {
+  position: fixed;
+  top: 55px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  z-index: 9999;
+  overflow-y: auto;
+  background: #fff;
+  transition: ease-in-out 0.2s;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 10px;
+  padding: 10px 0;
+
+  * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: block;
+    position: relative;
+    color: $secondary;
+    padding: 10px 20px;
+    font-weight: 500;
+    outline: none;
+  }
+
+  a:hover, .active > a, li:hover > a {
+    color: $primary;
+    text-decoration: none;
+  }
+
+  .drop-down > a:after {
+    content: "\ea99"; 
+    font-family: IcoFont;
+    padding-left: 10px; 
+    position: absolute;
+    right: 15px;
+  }
+
+  .active.drop-down > a:after {
+    content: "\eaa1";
+  }
+  
+  .drop-down > a {
+    padding-right: 35px;
+  }
+  
+  .drop-down ul {
+    display: none;
+    overflow: hidden;
+  }
+
+  .drop-down li {
+    padding-left: 20px;
+  }
+}
+
+.mobile-nav-overly {
+  width:100%;
+  height:100%;
+  z-index:9997;
+  top:0;
+  left:0;
+  position:fixed;
+  background: rgba(darken($secondary, 10), 0.6);
+  overflow: hidden;
+  display: none;
+  transition: ease-in-out 0.2s;
+}
+
+.mobile-nav-active {
+  overflow: hidden;
+
+  .mobile-nav {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-nav-toggle i {
+    color: #fff;
+  }
+}
