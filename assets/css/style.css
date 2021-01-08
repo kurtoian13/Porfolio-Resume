@@ -629,6 +629,8 @@ section {
 height: auto;
 }
 
+
+
 /*--------------------------------------------------------------
 # My Resume
 --------------------------------------------------------------*/
@@ -669,9 +671,14 @@ height: auto;
   padding-left: 20px;
 }
 
-.resume .resume-item ul li {
-  padding-bottom: 10px;
+.resume .resume-item  ul li img {
+  padding: 10px;
+  width: 20%;
+  height: auto;
+  border-radius: 20%;
 }
+
+
 
 .resume .resume-item:last-child {
   padding-bottom: 0;
