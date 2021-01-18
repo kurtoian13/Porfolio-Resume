@@ -632,9 +632,8 @@ height: auto;
 @media (max-width: 1024px) {
   .about .image {
     background: url("../img/me.jpg") no-repeat center;
-    background-size: 60%;
+    background-size: 75%;
     
-  
   }
 }
 
